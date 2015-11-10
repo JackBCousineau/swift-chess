@@ -3,7 +3,6 @@
 //  Chess
 //
 //  Created by Jack Cousineau on 10/23/15.
-//  Copyright © 2015 Jack Cousineau. All rights reserved.
 //
 
 import Cocoa

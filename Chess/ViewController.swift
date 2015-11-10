@@ -3,7 +3,6 @@
 //  Chess
 //
 //  Created by Jack Cousineau on 10/14/15.
-//  Copyright © 2015 Jack Cousineau. All rights reserved.
 //
 
 import Cocoa
@@ -15,6 +14,9 @@ class ViewController: NSViewController{
     
     @IBOutlet var player1TextField: NSTextField!
     @IBOutlet var player2TextField: NSTextField!
+    
+    @IBOutlet var iconSetPopUpButton: NSPopUpButton!
+    @IBOutlet var iconSetPreviewImageView: NSImageView!
     
     var sidesSwitched = false
     
@@ -28,16 +30,29 @@ class ViewController: NSViewController{
         side1Label.stringValue = "White side"
         side2Label.stringValue = "Black side"
     }
+    
+    @IBAction func iconSetPopUpAction(popUpButton: NSPopUpButton){
+        //print((popUpButton.selectedItem?.title)!)
+        //print("\((popUpButton.selectedItem?.title)!)_preview")
+        iconSetPreviewImageView.image = NSImage(named: "\((popUpButton.selectedItem?.title.lowercaseString)!)_preview")
+    }
 
     var games = [ChessGame]()
     
     @IBAction func startButtonClicked(button: NSButton){
-        if(!sidesSwitched){
-            games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player1TextField.stringValue, blackPlayerName: player2TextField.stringValue))
-            return
+        var whiteName = player1TextField.stringValue, blackName = player2TextField.stringValue
+        if(sidesSwitched){
+            whiteName = blackName
+            blackName = player1TextField.stringValue
+            //games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player1TextField.stringValue, blackPlayerName: player2TextField.stringValue, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
+            //return
         }
-        games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player2TextField.stringValue, blackPlayerName: player1TextField.stringValue))
+        //games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player2TextField.stringValue, blackPlayerName: player1TextField.stringValue, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
+        games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: whiteName, blackPlayerName: blackName, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
     }
+    
+    // was 243
+    // 35, 208
 
 
 }

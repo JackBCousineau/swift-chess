@@ -3,7 +3,6 @@
 //  Chess
 //
 //  Created by Jack Cousineau on 10/14/15.
-//  Copyright © 2015 Jack Cousineau. All rights reserved.
 //
 
 import Cocoa
@@ -82,14 +81,14 @@ class ChessGame{
         }
     }
 
-    init(gameType: GameType, difficulty: Int!, whitePlayerName: String, blackPlayerName: String){
+    init(gameType: GameType, difficulty: Int!, whitePlayerName: String, blackPlayerName: String, iconSetName: String){
         self.blackPlayerName = blackPlayerName
         self.whitePlayerName = whitePlayerName
         
         let windowController = NSStoryboard(name: "Main", bundle: NSBundle.mainBundle()).instantiateControllerWithIdentifier("ChessBoardWindowController") as! NSWindowController
         gameWindow = windowController.window
         gameWindow.title = whitePlayerName + " vs " + blackPlayerName + ", ft. John Cena"
-        chessBoard = gameWindow.contentView?.subviews[0] as! Board
+        chessBoard = gameWindow.contentView?.subviews[6] as! Board
         
         var view = gameWindow.contentView, size = CGFloat(18), x = CGFloat(44), y = CGFloat(40)
         for i in 0...15{
@@ -108,7 +107,7 @@ class ChessGame{
             }
         }
         
-        iconSet = IconSet(iconSetName: "normal")
+        iconSet = IconSet(iconSetName: iconSetName.lowercaseString)
         chessBoard.populateBoard(iconSet)
         chessBoard.currentPlayerTurnLabel.stringValue = whitePlayerName + "'s"
         chessBoard.whitePlayerLabel.stringValue = whitePlayerName + " - White"

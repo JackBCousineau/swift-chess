@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
-        <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -645,7 +644,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Chess" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="75" y="-102"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -653,7 +652,7 @@
                 <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Chess" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <rect key="contentRect" x="644" y="417" width="254" height="243"/>
+                        <rect key="contentRect" x="644" y="417" width="254" height="333"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
                     </window>
                     <connections>
@@ -662,7 +661,7 @@
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="204.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="rL8-Pl-yyJ">
@@ -689,41 +688,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="602" height="682"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <box fixedFrame="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-uy-IpW" customClass="Board" customModule="Chess" customModuleProvider="target">
-                                <rect key="frame" x="17" y="96" width="568" height="568"/>
-                                <view key="contentView" ambiguous="YES" id="ka6-WN-5Dx">
-                                    <rect key="frame" x="1" y="1" width="566" height="566"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <box hidden="YES" fixedFrame="YES" title="Box" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="bmD-5X-WGD">
-                                            <rect key="frame" x="-3" y="492" width="76" height="76"/>
-                                            <view key="contentView" ambiguous="YES" id="XhP-ih-MZ6">
-                                                <rect key="frame" x="1" y="1" width="74" height="74"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </box>
-                                        <box fixedFrame="YES" title="Box" boxType="custom" borderType="line" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="2ye-7D-5j9">
-                                            <rect key="frame" x="49" y="297" width="171" height="110"/>
-                                            <view key="contentView" ambiguous="YES" id="OYY-6o-CAW">
-                                                <rect key="frame" x="1" y="1" width="169" height="108"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            </view>
-                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                            <color key="fillColor" red="0.30196078430000001" green="0.67843137249999996" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        </box>
-                                    </subviews>
-                                </view>
-                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="blackPlayerLabel" destination="eUl-hr-Vzc" id="CRo-zO-L1Y"/>
-                                    <outlet property="currentPlayerTurnLabel" destination="GoA-vH-Gso" id="UGS-Uc-Prr"/>
-                                    <outlet property="turnLabel" destination="1ke-nq-HdO" id="iUP-OK-qga"/>
-                                    <outlet property="whitePlayerLabel" destination="OMQ-LZ-Knx" id="quc-xk-wxy"/>
-                                </connections>
-                            </box>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GoA-vH-Gso">
                                 <rect key="frame" x="220" y="57" width="163" height="28"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Player 1's" id="Xmh-u0-XE1">
@@ -768,6 +732,15 @@
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
                             </box>
+                            <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sK4-Kl-pyE" customClass="Board" customModule="Chess" customModuleProvider="target">
+                                <rect key="frame" x="17" y="98" width="568" height="568"/>
+                                <connections>
+                                    <outlet property="blackPlayerLabel" destination="eUl-hr-Vzc" id="FkY-La-8av"/>
+                                    <outlet property="currentPlayerTurnLabel" destination="GoA-vH-Gso" id="QlZ-rF-qfe"/>
+                                    <outlet property="turnLabel" destination="1ke-nq-HdO" id="KGR-mS-5N8"/>
+                                    <outlet property="whitePlayerLabel" destination="OMQ-LZ-Knx" id="ah5-JD-2Uc"/>
+                                </connections>
+                            </customView>
                         </subviews>
                     </view>
                 </viewController>
@@ -780,11 +753,11 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Chess" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="254" height="243"/>
+                        <rect key="frame" x="0.0" y="0.0" width="254" height="333"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-DE-gny">
-                                <rect key="frame" x="54" y="187" width="145" height="26"/>
+                                <rect key="frame" x="54" y="277" width="145" height="26"/>
                                 <popUpButtonCell key="cell" type="push" title="Human vs Human" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="nmk-ci-n7s" id="1tX-ha-1lJ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
@@ -813,7 +786,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PIn-xe-FhN">
-                                <rect key="frame" x="102" y="219" width="50" height="17"/>
+                                <rect key="frame" x="102" y="309" width="50" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Players" id="O1B-Im-8KN">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -821,7 +794,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LfR-Xa-PJ6">
-                                <rect key="frame" x="98" y="158" width="58" height="17"/>
+                                <rect key="frame" x="98" y="248" width="58" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Difficulty" id="U9O-tA-tSa">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -829,11 +802,11 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="syE-Ij-dKv">
-                                <rect key="frame" x="79" y="121" width="96" height="21"/>
+                                <rect key="frame" x="79" y="211" width="96" height="21"/>
                                 <sliderCell key="cell" enabled="NO" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="1Vt-vT-goO"/>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Df9-A1-rbU">
-                                <rect key="frame" x="110" y="144" width="33" height="14"/>
+                                <rect key="frame" x="110" y="234" width="33" height="14"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="N/A" id="KZE-Vx-4tD">
                                     <font key="font" size="11" name=".HelveticaNeueDeskInterface-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -841,7 +814,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TD7-zA-Th8">
-                                <rect key="frame" x="40" y="59" width="58" height="22"/>
+                                <rect key="frame" x="40" y="161" width="58" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Player 1" drawsBackground="YES" id="Csw-nY-a6w">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -849,7 +822,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VT8-2n-X60">
-                                <rect key="frame" x="157" y="59" width="58" height="22"/>
+                                <rect key="frame" x="157" y="161" width="58" height="22"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Player 2" drawsBackground="YES" id="Uyk-nH-a43">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -857,8 +830,8 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Oq-Ou-YKc">
-                                <rect key="frame" x="104" y="68" width="47" height="32"/>
-                                <buttonCell key="cell" type="push" title="s" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lRg-zo-Eb5">
+                                <rect key="frame" x="104" y="159" width="47" height="32"/>
+                                <buttonCell key="cell" type="push" bezelStyle="rounded" image="swap" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lRg-zo-Eb5">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -867,7 +840,7 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bBY-E4-vhN">
-                                <rect key="frame" x="151" y="94" width="69" height="17"/>
+                                <rect key="frame" x="151" y="188" width="69" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Black side" id="0OL-Rw-5tk">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -875,8 +848,37 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xdS-po-1AC">
-                                <rect key="frame" x="35" y="94" width="69" height="17"/>
+                                <rect key="frame" x="35" y="188" width="69" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="White side" id="Wo1-fM-qaq">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8ip-YJ-46R">
+                                <rect key="frame" x="137" y="62" width="78" height="78"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="normal_preview" id="bb8-VO-Jfb"/>
+                            </imageView>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZNW-Z0-8pD">
+                                <rect key="frame" x="36" y="83" width="92" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="FV4-xt-VQ1" id="ZMw-Th-MRa">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="CUT-ku-fzj">
+                                        <items>
+                                            <menuItem title="Normal" state="on" id="FV4-xt-VQ1"/>
+                                            <menuItem title="Maya" id="bqO-Gu-Nf7" userLabel="Maya"/>
+                                            <menuItem title="Alphonso" id="myc-19-uG7" userLabel="Alphonso"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <action selector="iconSetPopUpAction:" target="XfG-lQ-9wD" id="kNC-UZ-BM6"/>
+                                </connections>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f8W-Jh-WA9">
+                                <rect key="frame" x="55" y="108" width="54" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Icon set" id="J3Z-mt-LwD">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -885,6 +887,8 @@ DQ
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="iconSetPopUpButton" destination="ZNW-Z0-8pD" id="Yk2-Kx-ic0"/>
+                        <outlet property="iconSetPreviewImageView" destination="8ip-YJ-46R" id="Rxw-c4-yhc"/>
                         <outlet property="player1TextField" destination="TD7-zA-Th8" id="zAF-fJ-aAG"/>
                         <outlet property="player2TextField" destination="VT8-2n-X60" id="waf-vZ-7bE"/>
                         <outlet property="side1Label" destination="xdS-po-1AC" id="br2-k5-d65"/>
@@ -893,7 +897,11 @@ DQ
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="641.5"/>
+            <point key="canvasLocation" x="75" y="696.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="normal_preview" width="156" height="156"/>
+        <image name="swap" width="20" height="20"/>
+    </resources>
 </document>

@@ -3,12 +3,11 @@
 //  Chess
 //
 //  Created by Jack Cousineau on 10/14/15.
-//  Copyright © 2015 Jack Cousineau. All rights reserved.
 //
 
 import Cocoa
 
-class Board: NSBox{
+class Board: NSView{
     
     @IBOutlet var currentPlayerTurnLabel: NSTextField!
     @IBOutlet var turnLabel: NSTextField!
