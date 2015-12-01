@@ -86,10 +86,12 @@ class Board: NSView{
                             
                             if highlightedPiece.isKindOfClass(Pawn) && (isWhite && space.y == 7 || !isWhite && space.y == 0) {
                                 var queenImage = self.chessGame.iconSet.whiteQueen
+                                var color = PieceColor.White
                                 if(!isWhite){
                                     queenImage = self.chessGame.iconSet.blackQueen
+                                    color = .Black
                                 }
-                                space.setPiece(Queen(image: queenImage, pawnImage: highlightedPiece.pieceImage, color: .White))
+                                space.setPiece(Queen(image: queenImage, pawnImage: highlightedPiece.pieceImage, color: color))
                             }
                             
                             if occupant != nil{ // An enemy has been destroyed

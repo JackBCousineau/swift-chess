@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9060"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -727,7 +727,7 @@
                                 <font key="titleFont" metaFont="system"/>
                             </box>
                             <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="2Ka-OL-SGl" userLabel="Black separator">
-                                <rect key="frame" x="409" y="63" width="123" height="5"/>
+                                <rect key="frame" x="409" y="63" width="123" height="4"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                 <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <font key="titleFont" metaFont="system"/>
@@ -758,19 +758,22 @@
                         <subviews>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aqn-DE-gny">
                                 <rect key="frame" x="54" y="277" width="145" height="26"/>
-                                <popUpButtonCell key="cell" type="push" title="Human vs Human" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="nmk-ci-n7s" id="1tX-ha-1lJ">
+                                <popUpButtonCell key="cell" type="push" title="Human vs Human" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="1" imageScaling="proportionallyDown" inset="2" autoenablesItems="NO" selectedItem="nmk-ci-n7s" id="1tX-ha-1lJ">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" autoenablesItems="NO" id="nnM-bk-xWp">
                                         <items>
-                                            <menuItem title="Human vs Human" state="on" id="nmk-ci-n7s"/>
-                                            <menuItem title="Human vs Computer" enabled="NO" id="TvH-oz-PPB"/>
+                                            <menuItem title="Human vs Human" state="on" tag="1" id="nmk-ci-n7s"/>
+                                            <menuItem title="Human vs Computer" id="TvH-oz-PPB"/>
                                             <menuItem title="Computer vs Computer" enabled="NO" id="iFb-4E-7Lz">
                                                 <modifierMask key="keyEquivalentModifierMask"/>
                                             </menuItem>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="playersPopUpAction:" target="XfG-lQ-9wD" id="TO9-se-ytP"/>
+                                </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-15-Pvk">
                                 <rect key="frame" x="86" y="13" width="82" height="32"/>
@@ -884,15 +887,65 @@ DQ
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cr1-8f-Wjk">
+                                <rect key="frame" x="41" y="120" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Join" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="36c-iu-0Vc">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="searchButtonPressed:" target="XfG-lQ-9wD" id="NvR-ZF-air"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZJS-C7-LLk">
+                                <rect key="frame" x="131" y="120" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Host" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="tOi-Hg-38b">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="stopButtonPressed:" target="XfG-lQ-9wD" id="X2S-Zt-Qhf"/>
+                                </connections>
+                            </button>
+                            <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wle-ZL-JOG">
+                                <rect key="frame" x="24" y="102" width="205" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Host or join LAN here! :)" id="eKv-87-fSV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ldc-Fb-QiV">
+                                <rect key="frame" x="204" y="101" width="67" height="32"/>
+                                <buttonCell key="cell" type="push" title="look" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0mW-Hb-qe5">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testButtonClicked:" target="XfG-lQ-9wD" id="ZsX-xb-S3f"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8S-Dd-d5y">
+                                <rect key="frame" x="86" y="120" width="82" height="32"/>
+                                <buttonCell key="cell" type="push" title="Search" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qU5-HP-tYf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="iconSetPopUpButton" destination="ZNW-Z0-8pD" id="Yk2-Kx-ic0"/>
+                        <outlet property="iconSetPopUpButtonLabel" destination="f8W-Jh-WA9" id="03J-VE-ENK"/>
                         <outlet property="iconSetPreviewImageView" destination="8ip-YJ-46R" id="Rxw-c4-yhc"/>
+                        <outlet property="networkStatusLabel" destination="wle-ZL-JOG" id="jvh-gb-pey"/>
                         <outlet property="player1TextField" destination="TD7-zA-Th8" id="zAF-fJ-aAG"/>
                         <outlet property="player2TextField" destination="VT8-2n-X60" id="waf-vZ-7bE"/>
+                        <outlet property="searchButton" destination="cr1-8f-Wjk" id="ZZw-xZ-r9a"/>
                         <outlet property="side1Label" destination="xdS-po-1AC" id="br2-k5-d65"/>
                         <outlet property="side2Label" destination="bBY-E4-vhN" id="mX6-cU-rd9"/>
+                        <outlet property="startButton" destination="Rdp-15-Pvk" id="Beh-Oo-7xW"/>
+                        <outlet property="stopButton" destination="ZJS-C7-LLk" id="nwU-ol-Cia"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

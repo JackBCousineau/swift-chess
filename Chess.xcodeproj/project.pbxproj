@@ -15,6 +15,7 @@
 		0460DDB11BCF20A2002F9CA5 /* ChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DDB01BCF20A2002F9CA5 /* ChessGame.swift */; };
 		0460DDB31BCF2C92002F9CA5 /* BoardSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460DDB21BCF2C92002F9CA5 /* BoardSpace.swift */; };
 		0496D7351BF2A9B700C177BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0496D7341BF2A9B700C177BF /* Assets.xcassets */; };
+		0497BC061BF957C300291006 /* LANManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0497BC051BF957C300291006 /* LANManager.swift */; };
 		04C015551BDAF80800FF53D5 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C015541BDAF80800FF53D5 /* Knight.swift */; };
 		04C015571BDAF93B00FF53D5 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C015561BDAF93B00FF53D5 /* Pawn.swift */; };
 		04C015591BDAFA4000FF53D5 /* Bishop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C015581BDAFA4000FF53D5 /* Bishop.swift */; };
@@ -34,6 +35,7 @@
 		0460DDB01BCF20A2002F9CA5 /* ChessGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChessGame.swift; sourceTree = "<group>"; };
 		0460DDB21BCF2C92002F9CA5 /* BoardSpace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardSpace.swift; sourceTree = "<group>"; };
 		0496D7341BF2A9B700C177BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0497BC051BF957C300291006 /* LANManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LANManager.swift; sourceTree = "<group>"; };
 		04C015541BDAF80800FF53D5 /* Knight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Knight.swift; path = "Chess Pieces/Knight.swift"; sourceTree = "<group>"; };
 		04C015561BDAF93B00FF53D5 /* Pawn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pawn.swift; path = "Chess Pieces/Pawn.swift"; sourceTree = "<group>"; };
 		04C015581BDAFA4000FF53D5 /* Bishop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bishop.swift; path = "Chess Pieces/Bishop.swift"; sourceTree = "<group>"; };
@@ -78,12 +80,21 @@
 				0460DDAC1BCF1D60002F9CA5 /* Board.swift */,
 				0460DDAE1BCF1D6E002F9CA5 /* ChessPiece.swift */,
 				04CA82511BDAD7AB00E2DAE3 /* Chess Pieces */,
+				0497BC041BF9577F00291006 /* LAN */,
 				0460DD9F1BCF1D26002F9CA5 /* ViewController.swift */,
 				0496D7341BF2A9B700C177BF /* Assets.xcassets */,
 				0460DDA31BCF1D26002F9CA5 /* Main.storyboard */,
 				0460DDA61BCF1D26002F9CA5 /* Info.plist */,
 			);
 			path = Chess;
+			sourceTree = "<group>";
+		};
+		0497BC041BF9577F00291006 /* LAN */ = {
+			isa = PBXGroup;
+			children = (
+				0497BC051BF957C300291006 /* LANManager.swift */,
+			);
+			name = LAN;
 			sourceTree = "<group>";
 		};
 		04CA82511BDAD7AB00E2DAE3 /* Chess Pieces */ = {
@@ -176,6 +187,7 @@
 				04C015571BDAF93B00FF53D5 /* Pawn.swift in Sources */,
 				0460DDB11BCF20A2002F9CA5 /* ChessGame.swift in Sources */,
 				04C015551BDAF80800FF53D5 /* Knight.swift in Sources */,
+				0497BC061BF957C300291006 /* LANManager.swift in Sources */,
 				0460DD9E1BCF1D26002F9CA5 /* AppDelegate.swift in Sources */,
 				0460DDAD1BCF1D60002F9CA5 /* Board.swift in Sources */,
 				04C0155D1BDAFA5300FF53D5 /* King.swift in Sources */,
