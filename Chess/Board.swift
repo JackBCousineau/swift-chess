@@ -7,26 +7,81 @@
 
 import Cocoa
 
+/**
+ The `Board` class encapsulates the actual "visual" portion of a ChessGame instance.
+ It can be thought of as the physical playing board in a real-life game of chess.
+ */
 class Board: NSView{
     
+    /**
+     The `NSTextField` that displays the name of whomever's turn it is.
+     */
     @IBOutlet var currentPlayerTurnLabel: NSTextField!
+    
+    /**
+     The `NSTextField` that says "turn".
+     */
     @IBOutlet var turnLabel: NSTextField!
+    
+    /**
+     The `NSTextField` that displays the white player's name.
+     */
     @IBOutlet var whitePlayerLabel: NSTextField!
+    
+    /**
+     The `NSTextField` that displays the white player's name.
+     */
     @IBOutlet var blackPlayerLabel: NSTextField!
     
+    /**
+     The game's corresponding `ChessGame` instance
+     */
     var chessGame: ChessGame!
     
+    /**
+     2D array to hold the game's `BoardSpace`s in a grid pattern.
+     Note that the coordinates start from the bottom-left, at 0,0.
+     */
     var boardSpaces = [[BoardSpace]]()
     
+    /**
+     The `BoardSpace` currently highlighted.
+     */
     var highlightedSpace: BoardSpace!
+    
+    /**
+     The normal background `NSColor` of the `BoardSpace` that is currently highlighted.
+     Needed to restore the `BoardSpace`'s color back to normal after its highlight is removed.
+     */
     var highlightedSpaceColor: NSColor!
     
+    
+    /**
+     The `ChessPiece` that moved during the last turn. Used to detect the conditions for an en passant move.
+     */
     var lastPieceMoved: ChessPiece!
     
+    /**
+     Indicates whether the game has finished.
+     */
     var gameOver = false
     
+    /**
+     Our En passant callback code block. Also known as a "callback function", and functionally equivalent
+     to function pointers, these are basically blocks of code wrapped up to act like a normal variable. They provide an easy
+     way to interact between classes, and are much more flexible than other methods, such as delegation or notification usage.
+     In this case, it's being used to handle the extra board management required when a pawn destroys another pawn using en passant.
+     
+     - Parameter enemyX: The x-coordinate of the enemy pawn
+     - Parameter enemyY: The y-coordinate of the enemy pawn
+    */
     var enPassantBlock: ((enemyX: Int, enemyY: Int)->())!
     
+    /**
+     Highlights a `BoardSpace`.
+     
+     - Parameter space: The `BoardSpace` to highlight.
+     */
     func highlightPiece(space: BoardSpace){
         if let piece = highlightedSpace{
             piece.fillColor = highlightedSpaceColor
@@ -36,17 +91,24 @@ class Board: NSView{
         space.fillColor = NSColor.yellowColor()
     }
     
+    /**
+     Removes highlighting from the currently-highlighted `BoardSpace`.
+     */
     func clearHighlight(){
-        if(highlightedSpace != nil){
+        if highlightedSpace != nil{
             highlightedSpace.fillColor = highlightedSpaceColor
         }
         highlightedSpace = nil
         highlightedSpaceColor = nil
     }
     
+    /**
+     The constructor for the `Board` class. Called automatically when instantiated from the storyboard.
+     */
     required init?(coder: NSCoder){
         super.init(coder: coder)
         
+        // Here we define the callback block for En passant moves.
         enPassantBlock = {
             (x: Int, y: Int) in
             let capturedPiece = self.boardSpaces[x][y].occupyingPiece
@@ -56,20 +118,25 @@ class Board: NSView{
         
         var whiteSpace = false
         
-        
+        // The sole purpose of this column loop, and the row loop two lines later, is to populate the empty board with BoardSpaces. However, a
+        // clickEventHandler block must be passed to the BoardSpace constructor; declaring the block here negates the need to hold a reference
+        // to it, but has the unfortunate side effect of greatly ballooning the size of this section of otherwise-unrelated code.
         for(var column = 0; column < 8; column++){
             var columnSection = [BoardSpace]()
             for(var row = 0; row < 8; row++){
                 let boardSpace = BoardSpace(xPixels: column*70+2, yPixels: row*70+2, fillWhite: whiteSpace){
+                    
+                    // Everything between this line and line 202 is the definition of the clickEventHandler callback.
                     space in
                     
+                    // We immediately end the function if the game is over, as we want to ignore all clicks on any BoardSpace.
                     if(self.gameOver){
                         return
                     }
                     
                     let occupant = space.occupyingPiece
-                    var occupantIsAlly = false//!(occupant != nil && occupant.pieceColor == self.chessGame.playerTurn)
-                    if(occupant != nil && occupant.pieceColor == self.chessGame.playerTurn){
+                    var occupantIsAlly = false
+                    if occupant != nil && occupant.pieceColor == self.chessGame.playerTurn{
                         occupantIsAlly = true
                     }
                     
@@ -86,7 +153,7 @@ class Board: NSView{
                             
                             if highlightedPiece.isKindOfClass(Pawn) && (isWhite && space.y == 7 || !isWhite && space.y == 0) {
                                 var queenImage = self.chessGame.iconSet.whiteQueen
-                                if(!isWhite){
+                                if !isWhite {
                                     queenImage = self.chessGame.iconSet.blackQueen
                                 }
                                 space.setPiece(Queen(image: queenImage, pawnImage: highlightedPiece.pieceImage, color: .White))
@@ -98,8 +165,8 @@ class Board: NSView{
                                 }
                                 else{
                                     self.chessGame.displayCapturedPiece(occupant)
-                                    if(occupant.isKindOfClass(King)){
-                                        if(self.chessGame.playerTurn == PieceColor.White){
+                                    if occupant.isKindOfClass(King){
+                                        if self.chessGame.playerTurn == PieceColor.White{
                                             self.currentPlayerTurnLabel.stringValue = self.chessGame.whitePlayerName
                                         }
                                         else{
@@ -113,7 +180,7 @@ class Board: NSView{
                                     }
                                 }
                             }
-                            if(self.lastPieceMoved != nil && self.lastPieceMoved.isKindOfClass(Pawn)){
+                            if self.lastPieceMoved != nil && self.lastPieceMoved.isKindOfClass(Pawn){
                                 (self.lastPieceMoved as! Pawn).justMadeDoubleStep = false
                             }
                             self.lastPieceMoved = space.occupyingPiece
@@ -128,12 +195,12 @@ class Board: NSView{
                         }
                     }
                     
-                    else if(occupantIsAlly){
+                    else if occupantIsAlly{
                         self.highlightPiece(space)
                         return
                     }
                     self.clearHighlight()
-                }
+                } // End of clickEventHandler.
                 addSubview(boardSpace)
                 columnSection.append(boardSpace)
                 whiteSpace = !whiteSpace
@@ -143,6 +210,11 @@ class Board: NSView{
         }
     }
     
+    /**
+     Places all pieces on the `Board`.
+     
+     - Parameter iconSet: The `IconSet` to populate with.
+     */
     func populateBoard(iconSet: IconSet){
         for i in 0...7{
             boardSpaces[i][1].setPiece(Pawn(image: iconSet.whitePawn, color: .White, enPassantEventHandler: enPassantBlock))
@@ -168,26 +240,4 @@ class Board: NSView{
         boardSpaces[6][7].setPiece(Knight(image: iconSet.blackKnight, color: .Black))
         boardSpaces[7][7].setPiece(Rook(image: iconSet.blackRook, color: .Black))
     }
-    
-    func getColumnCharacter(column: Int) -> Character{
-        switch column{
-        case 1:
-            return "A"
-        case 2:
-            return "B"
-        case 3:
-            return "C"
-        case 4:
-            return "D"
-        case 5:
-            return "E"
-        case 6:
-            return "F"
-        case 7:
-            return "G"
-        default:
-            return "H"
-        }
-    }
-    
 }

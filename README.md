@@ -10,9 +10,11 @@ All that should be needed to build this is an up-to-date version of Xcode, on an
   * Castling
   * Queening
   * En Passant's rule
- * Multiple icon sets, thanks to [PyChess](https://github.com/pychess/pychess) (licensing info in [LICENSING.md](https://github.com/JackBCousineau/swift-chess/blob/master/LICENSING.md))
+* Multiple icon sets, thanks to [PyChess](https://github.com/pychess/pychess) (licensing info in [LICENSING.md](https://github.com/JackBCousineau/swift-chess/blob/master/LICENSING.md))
 
 
 #### Planned features
+* Full code documentation (in-progress, see most recent commit)
+* LAN network multiplayer [in-progress](https://github.com/JackBCousineau/swift-chess/commit/00755a2825a53ec688e2b5618a2901b81ae54cbe)
 * King checking detection
 * Computer opponents with configurable difficulty

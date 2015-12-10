@@ -20,6 +20,7 @@ class ViewController: NSViewController{
     
     var sidesSwitched = false
     
+    // The "switch sides" button event handler. Simply switches the color/starting side of each player.
     @IBAction func switchButtonClicked(button: NSButton){
         sidesSwitched = !sidesSwitched
         if(sidesSwitched){
@@ -31,29 +32,29 @@ class ViewController: NSViewController{
         side2Label.stringValue = "Black side"
     }
     
+    // The icon set chooser popup-button event handler
     @IBAction func iconSetPopUpAction(popUpButton: NSPopUpButton){
-        //print((popUpButton.selectedItem?.title)!)
-        //print("\((popUpButton.selectedItem?.title)!)_preview")
+        
+        // Sets the icon set preview image to an image of the selected item's lowercase string, with "_preview" appended
         iconSetPreviewImageView.image = NSImage(named: "\((popUpButton.selectedItem?.title.lowercaseString)!)_preview")
     }
 
+    // Holds all active chess games. Without holding a pointer to the new ChessGame object would be immediately deallocated by the garbage collector
     var games = [ChessGame]()
     
+    // "Start" button event handler
     @IBAction func startButtonClicked(button: NSButton){
+        
+        // We grab the user-entered player names from their associated text boxes
         var whiteName = player1TextField.stringValue, blackName = player2TextField.stringValue
+        
+        // If the sides have been switched, then we invert the white and black player name assignments
         if(sidesSwitched){
             whiteName = blackName
             blackName = player1TextField.stringValue
-            //games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player1TextField.stringValue, blackPlayerName: player2TextField.stringValue, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
-            //return
         }
-        //games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: player2TextField.stringValue, blackPlayerName: player1TextField.stringValue, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
+        
+        // We create the new ChessGame object with the given parameters, and add it to the ChessGame array.
         games.append(ChessGame(gameType: .HumanVsHuman, difficulty: nil, whitePlayerName: whiteName, blackPlayerName: blackName, iconSetName: (iconSetPopUpButton.selectedItem?.title)!))
     }
-    
-    // was 243
-    // 35, 208
-
-
 }
-
