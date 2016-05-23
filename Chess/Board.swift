@@ -121,9 +121,9 @@ class Board: NSView{
         // The sole purpose of this column loop, and the row loop two lines later, is to populate the empty board with BoardSpaces. However, a
         // clickEventHandler block must be passed to the BoardSpace constructor; declaring the block here negates the need to hold a reference
         // to it, but has the unfortunate side effect of greatly ballooning the size of this section of otherwise-unrelated code.
-        for(var column = 0; column < 8; column++){
+        for column in 0 ..< 8 {
             var columnSection = [BoardSpace]()
-            for(var row = 0; row < 8; row++){
+            for row in 0 ..< 8 {
                 let boardSpace = BoardSpace(xPixels: column*70+2, yPixels: row*70+2, fillWhite: whiteSpace){
                     
                     // Everything between this line and line 202 is the definition of the clickEventHandler callback.
