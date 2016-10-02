@@ -35,10 +35,10 @@ class Pawn: ChessPiece {
         
         if let _ = board[destinationX][destinationY].occupyingPiece{ // Piece at destination
             if(startX == destinationX){
-                maxXVariance--;
+                maxXVariance -= 1
             }
             else{
-                maxXVariance++
+                maxXVariance += 1
             }
         }
         
@@ -57,7 +57,7 @@ class Pawn: ChessPiece {
         let xVariance = abs(destinationX - startX), yVariance = abs(destinationY - startY)
         
         if(firstMove){
-            maxYVariance++
+            maxYVariance += 1
         }
         
         
